@@ -62,7 +62,7 @@ def call(Map configMap) {
             stage('qualityGates') {
                 steps {
                     script {
-                        timeout(time:2, unit: 'MINUTES') {
+                        timeout(time:10, unit: 'MINUTES') {
                             waitForQualityGate abortPipeline: true
                         }
                     }
