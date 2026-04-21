@@ -1,8 +1,7 @@
 @Library('jenkins-shared-library') _
 
 def configMap = [
-    GIT_URL: "https://github.com/meghashyam-singh/21-4.git",
-    BRANCH: "main",
+    REGION: "us-east-1",
     COMPONENT: "shipping"
 ]
 
