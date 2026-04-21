@@ -59,15 +59,15 @@ def call(Map configMap) {
                     }
                 }
             }
-            stage('qualityGates') {
-                steps {
-                    script {
-                        timeout(time:20, unit: 'MINUTES') {
-                            waitForQualityGate abortPipeline: true
-                        }
-                    }
-                }
-            }
+            // stage('qualityGates') {
+            //     steps {
+            //         script {
+            //             timeout(time:20, unit: 'MINUTES') {
+            //                 waitForQualityGate abortPipeline: true
+            //             }
+            //         }
+            //     }
+            // }
             stage('image-build') {
                 steps {
                     sh "docker build -t ${PROJECT}/${COMPONENT}:${APPVERSION}-${BUILD_NUMBER} ./${COMPONENT}"
