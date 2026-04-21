@@ -93,8 +93,8 @@ def call(Map configMap) {
             }
             stage('trigger deploy job') {
                 steps {
-                    build job: "${COMPONENT}-cd-pipeline"
-                    propagate: false
+                    build job: "${COMPONENT}-cd-pipeline",
+                    propagate: false,
                     wait: false
                 }
             }
