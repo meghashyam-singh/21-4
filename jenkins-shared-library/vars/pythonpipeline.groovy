@@ -42,7 +42,7 @@ def call(configMap) {
             stage('build code') {
                 steps {
                     dir("${COMPONENT}") {
-                        sh "npm install"
+                        sh "pip3 install -r requirements.txt"
                     }
                 }
             }
@@ -88,6 +88,13 @@ def call(configMap) {
                             """
                         }
                     }
+                }
+            }
+            stage('trigger deployment job') {
+                steps {
+                    build job: "${COMPONENT}-cd-pipeline",
+                    propagate: "false",
+                    wait: "false"
                 }
             }
         }

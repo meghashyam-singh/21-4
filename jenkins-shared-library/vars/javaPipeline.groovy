@@ -91,6 +91,13 @@ def call(configMap) {
                     }
                 }
             }
+            stage('trigger deployment job') {
+                steps {
+                    build job: "${COMPONENT}-cd-pipeline",
+                    propagate: "false",
+                    wait: "false"
+                }
+            }
         }
     }
 }
