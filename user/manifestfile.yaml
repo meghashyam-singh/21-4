@@ -88,7 +88,7 @@ spec:
       name: user-port
 
 ---
-apiVersion: v1
+apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: user-hpa
