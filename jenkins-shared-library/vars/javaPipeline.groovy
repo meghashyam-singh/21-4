@@ -52,7 +52,7 @@ def call(configMap) {
                     dir("${COMPONENT}") {
                         script {
                             def scannerHome = tool 'sonar-8.0'
-                            withSonarqubeEnv('sonar-server') {
+                            withSonarQubeEnv('sonar-server') {
                                 sh "${scannerHome}/bin/sonar-scanner"
                             }
                         }
