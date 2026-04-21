@@ -5,4 +5,4 @@ def configMap = [
     COMPONENT: "catalogue"
 ]
 
-deploymentPipeline(configMap)
+deploymentpipeline(configMap)

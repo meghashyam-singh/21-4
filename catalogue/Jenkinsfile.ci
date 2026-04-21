@@ -6,4 +6,4 @@ def configMap = [
     COMPONENT: "catalogue"
 ]
 
-nodeJSpipeline(configMap)
+nodeJSPipeline(configMap)
