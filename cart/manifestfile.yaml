@@ -14,7 +14,7 @@ data:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: cart-config
+  name: cart
   namespace: roboshop
   labels:
     project: roboshop
