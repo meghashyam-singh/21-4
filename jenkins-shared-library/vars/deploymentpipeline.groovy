@@ -15,6 +15,7 @@ def call(configMap) {
                     dir("${COMPONENT}") {
                         withAWS(region:"${REGION}",credentials:'aws-creds') {
                             sh """
+                            aws eks update-kubeconfig --region ${REGION} --name roboshop-cluster
                             kubectl apply -f manifestfile.yaml
                             """
                         }
