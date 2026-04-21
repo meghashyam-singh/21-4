@@ -1,0 +1,8 @@
+@Library('jenkins-shared-library') _
+
+def configMap = [
+    REGION: "us-east-1",
+    COMPONENT: "catalogue"
+]
+
+deploymentPipeline(configMap)
