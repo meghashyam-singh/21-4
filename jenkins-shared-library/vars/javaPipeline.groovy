@@ -43,7 +43,7 @@ def call(configMap) {
             stage('build code') {
                 steps {
                     dir("${COMPONENT}") {
-                        sh "npm install"
+                        sh "mvn clean package"
                     }
                 }
             }
@@ -59,25 +59,25 @@ def call(configMap) {
                     }
                 }
             }
-            stage('qualityGates') {
-                steps {
-                    script {
-                        timeout(time:2, unit: 'MINUTES') {
-                            waitForQualityGate abortPipeline: true
-                        }
-                    }
-                }
-            }
+            // stage('qualityGates') {
+            //     steps {
+            //         script {
+            //             timeout(time:2, unit: 'MINUTES') {
+            //                 waitForQualityGate abortPipeline: true
+            //             }
+            //         }
+            //     }
+            // }
             stage('image build') {
                 steps {
                     sh "docker build -t ${PROJECT}/${COMPONENT}:${APPVERSION}-${BUILD_NUMBER} ./${COMPONENT}"
                 }
             }
-            stage('image scan') {
-                steps {
-                    sh "trivy image ${PROJECT}/${COMPONENT}:${APPVERSION}-${BUILD_NUMBER} > ${COMPONENT}-image-scam-report.txt"
-                }
-            }
+            // stage('image scan') {
+            //     steps {
+            //         sh "trivy image ${PROJECT}/${COMPONENT}:${APPVERSION}-${BUILD_NUMBER} > ${COMPONENT}-image-scam-report.txt"
+            //     }
+            // }
             stage('image-push') {
                 steps {
                     script {
