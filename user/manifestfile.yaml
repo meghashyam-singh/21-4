@@ -53,7 +53,7 @@ spec:
             httpGet:
               path: /health
               port: user-port
-            failurethreshold: 2
+            failureThreshold: 2
             initialDelaySeconds: 40
             periodSeconds: 40
             timeoutSeconds: 20
@@ -61,7 +61,7 @@ spec:
             httpGet:
               path: /health
               port: user-port
-            failurethreshold: 2
+            failureThreshold: 2
             initialDelaySeconds: 40
             periodSeconds: 40
             timeoutSeconds: 20
