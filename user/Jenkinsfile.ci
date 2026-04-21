@@ -1,0 +1,9 @@
+@Library ('jenkins-shared-library') _
+
+def configMap = [
+    BRANCH: "main",
+    COMPONENT: "user",
+    GIT_URL: "https://github.com/meghashyam-singh/21-4.git"
+]
+
+nodeJSPipeline(configMap)
