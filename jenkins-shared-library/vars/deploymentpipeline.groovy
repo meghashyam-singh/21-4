@@ -31,7 +31,7 @@ def call(configMap) {
                 steps {
                     withAWS(region:"${REGION}",credentials:'aws-creds') {
                         sh """
-                        kubectl roll status deployment ${COMPONENT} -n roboshop
+                        kubectl rollout status deployment ${COMPONENT} -n roboshop
                         """
                     }
                 }
