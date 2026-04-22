@@ -6,4 +6,4 @@ def configMap = [
     GIT_URL: "https://github.com/meghashyam-singh/21-4.git"
 ]
 
-pythonPipeline(configMap)
+pythonpipeline(configMap)
