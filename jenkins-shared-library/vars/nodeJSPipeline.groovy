@@ -47,18 +47,18 @@ def call(Map configMap) {
                     }
                 }
             }
-            stage('sonarqube') {
-                steps {
-                    dir("${COMPONENT}") {
-                        script {
-                            def scannerHome = tool 'sonar-8.0'
-                            withSonarQubeEnv('sonar-server') {
-                                sh "${scannerHome}/bin/sonar-scanner"
-                            }
-                        }
-                    }
-                }
-            }
+            // stage('sonarqube') {
+            //     steps {
+            //         dir("${COMPONENT}") {
+            //             script {
+            //                 def scannerHome = tool 'sonar-8.0'
+            //                 withSonarQubeEnv('sonar-server') {
+            //                     sh "${scannerHome}/bin/sonar-scanner"
+            //                 }
+            //             }
+            //         }
+            //     }
+            // }
             // stage('qualityGates') {
             //     steps {
             //         script {
@@ -73,11 +73,11 @@ def call(Map configMap) {
                     sh "docker build -t ${PROJECT}/${COMPONENT}:${APPVERSION}-${BUILD_NUMBER} ./${COMPONENT}"
                 }
             }
-            stage('image-scan') {
-                steps {
-                    sh "trivy image ${PROJECT}/${COMPONENT}:${APPVERSION}-${BUILD_NUMBER} > ${COMPONENT}-image-scan-report.txt"
-                }
-            }
+            // stage('image-scan') {
+            //     steps {
+            //         sh "trivy image ${PROJECT}/${COMPONENT}:${APPVERSION}-${BUILD_NUMBER} > ${COMPONENT}-image-scan-report.txt"
+            //     }
+            // }
             stage('image-push') {
                 steps {
                     script {

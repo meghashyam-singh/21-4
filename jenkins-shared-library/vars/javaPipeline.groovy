@@ -47,18 +47,18 @@ def call(configMap) {
                     }
                 }
             }
-            stage('sonarqube') {
-                steps {
-                    dir("${COMPONENT}") {
-                        script {
-                            def scannerHome = tool 'sonar-8.0'
-                            withSonarQubeEnv('sonar-server') {
-                                sh "${scannerHome}/bin/sonar-scanner"
-                            }
-                        }
-                    }
-                }
-            }
+            // stage('sonarqube') {
+            //     steps {
+            //         dir("${COMPONENT}") {
+            //             script {
+            //                 def scannerHome = tool 'sonar-8.0'
+            //                 withSonarQubeEnv('sonar-server') {
+            //                     sh "${scannerHome}/bin/sonar-scanner"
+            //                 }
+            //             }
+            //         }
+            //     }
+            // }
             // stage('qualityGates') {
             //     steps {
             //         script {

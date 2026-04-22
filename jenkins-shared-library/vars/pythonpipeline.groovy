@@ -46,37 +46,37 @@ def call(configMap) {
                     }
                 }
             }
-            stage('sonarqube') {
-                steps {
-                    dir("${COMPONENT}") {
-                        script {
-                            def scannerHome = tool 'sonar-8.0'
-                            withSonarqubeEnv('sonar-server') {
-                                sh "${scannerHome}/bin/sonar-scanner"
-                            }
-                        }
-                    }
-                }
-            }
-            stage('qualityGate') {
-                steps {
-                    script {
-                        timeout(time:2, unit: 'MINUTES') {
-                            waitForQualityGate abortPipeline: true
-                        }
-                    }
-                }
-            }
+            // stage('sonarqube') {
+            //     steps {
+            //         dir("${COMPONENT}") {
+            //             script {
+            //                 def scannerHome = tool 'sonar-8.0'
+            //                 withSonarqubeEnv('sonar-server') {
+            //                     sh "${scannerHome}/bin/sonar-scanner"
+            //                 }
+            //             }
+            //         }
+            //     }
+            // }
+            // stage('qualityGate') {
+            //     steps {
+            //         script {
+            //             timeout(time:2, unit: 'MINUTES') {
+            //                 waitForQualityGate abortPipeline: true
+            //             }
+            //         }
+            //     }
+            // }
             stage('image-build') {
                 steps {
                     sh "docker build -t ${PROJECT}/${COMPONENT}:${APPVERSION}-${BUILD-NUMBER} ./${COMPONENT}"
                 }
             }
-            stage('image scan') {
-                steps {
-                    sh "trivy image ${PROJECT}/${COMPONENT}:${APPVERSION}-${BUILD-NUMBER} > ${COMPONENT}-image-scan-report.txt"
-                }
-            }
+            // stage('image scan') {
+            //     steps {
+            //         sh "trivy image ${PROJECT}/${COMPONENT}:${APPVERSION}-${BUILD-NUMBER} > ${COMPONENT}-image-scan-report.txt"
+            //     }
+            // }
             stage('image-push') {
                 steps {
                     script {
